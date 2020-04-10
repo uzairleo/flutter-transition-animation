@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:route_transition/screens/Bouncing_Screen.dart';
 import 'package:route_transition/screens/SlideScreen.dart';
 import 'package:route_transition/screens/fade_screen.dart';
 import 'package:route_transition/screens/random_screen.dart';
@@ -30,6 +31,7 @@ class Screen1 extends StatelessWidget {
     'SizeTransition': SizeScreen(),
     'FadeTransition': FadeScreen(),
     'Random': RandomScreen(),
+    'BouncingTransition':BouncingScreen(),
   };
 
   @override
