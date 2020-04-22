@@ -25,13 +25,13 @@ class MyApp extends StatelessWidget {
 
 class Screen1 extends StatelessWidget {
   final Map<String, Widget> screens = {
-    'SlideTransition': SlideScreen(),
+    'SlideTransition': SlideScreen(),//the string will work for us as a text while the widget will for us as the route widget
     'ScaleTransition': ScaleScreen(),
     'RotationTransition': RotationScreen(),
     'SizeTransition': SizeScreen(),
     'FadeTransition': FadeScreen(),
     'Random': RandomScreen(),
-    'BouncingTransition':BouncingScreen(),
+    'BouncingTransition': BouncingScreen(),
   };
 
   @override
@@ -43,22 +43,26 @@ class Screen1 extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: buttons(context),
+          children:buttons(context),
+            
         ),
       ),
     );
   }
 
-  List<RaisedButton> buttons(context) {
+  List<RaisedButton> buttons(var context) {
     List<RaisedButton> buttons = List<RaisedButton>();
-    screens.forEach(
-      (k, v) => buttons.add(
-            RaisedButton(
-              child: Text(k),
-              onPressed: () => Navigator.push(
-                  context, CupertinoPageRoute(builder: (context) => v)),
-            ),
+    screens.forEach(//this will add all the 7 raised button to the button list and then return it 
+      (widgetName, routeWidget) {//this loop will depend on map elements suppose having 
+        buttons.add(//        2 elements in the maps then loop for each will run two time and vice versa
+          RaisedButton(
+            child: Text(widgetName),
+            onPressed: () => Navigator.push(
+                context, CupertinoPageRoute(
+                  builder: (context) => routeWidget)),
           ),
+        );
+      },
     );
     return buttons;
   }
